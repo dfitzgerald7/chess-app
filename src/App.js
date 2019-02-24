@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Chessboard from "chessboardjsx"
+import {
+  Route
+} from 'react-router-dom'
+import ChessboardContainer from "./containers/ChessboardContainer"
+import Home from "./stateless/Home"
 
 class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-            <Chessboard position="start"/>
-        </header>
-      </div>
+        <div className="App">
+          <header className="App-header">
+            <Route exact path="/" component={Home} />
+            <Route path="/games/new" component={ChessboardContainer} />
+          </header>
+        </div>
     );
   }
 }
