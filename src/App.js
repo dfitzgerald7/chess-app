@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {
-  Route
-} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import ChessboardContainer from "./containers/ChessboardContainer"
 import Home from "./stateless/Home"
 
