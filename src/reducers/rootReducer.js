@@ -6,12 +6,19 @@ const rootReducer = combineReducers({
 
 function boardReducer(state={
   currentMove: 0,
-  fen: ["rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"],
+  positions: ["start"],
   gameIds: []}, action = {}){
   switch (action.type){
     case "ADD_MOVE":
       const newMove = state.currentMove + 1
-      return {...state, currentMove: newMove, fen: [...state.fen, action.payload]}
+      return {...state, currentMove: newMove, fen: [...state.positions, action.payload]}
+    case "GOTO_MOVE":
+      return {...state, currentMove: action.payload}
+    case "CLEAR_BOARD":
+      return {
+        currentMove: 0,
+        positions: ["start"],
+        gameIds: []}
     default:
       return state
   }
