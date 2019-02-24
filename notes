@@ -1,0 +1,28 @@
+COMPONENTS:
+  APP
+    Navbar(log in )
+    Home
+    ChessboardContainer
+
+  Home
+    As of now, just links to game and training
+    Log in/sign up
+
+  ChessboardContainer
+    Chessboard
+    Information Container(Who wins, what the openings are called, list of moves with buttons to go to that move)
+
+DATA:
+  store:
+    array of fen moves for current game
+    when a move is made, fen is pushed to array
+    When game is saved, post request made to backend to store fen array
+  db in backend:
+    user info
+    user has many games
+    games have gameId, userId and ordered array of moves
+
+ASYNC
+  training:
+    (Hopefully) send get requests to backend after moves to get names of openings
+    fetch games from lichess of famous games with similar moves
