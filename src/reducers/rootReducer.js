@@ -11,7 +11,7 @@ function boardReducer(state={
   switch (action.type){
     case "ADD_MOVE":
       const newMove = state.currentMove + 1
-      return {...state, currentMove: newMove, fen: [...state.positions, action.payload]}
+      return {...state, currentMove: newMove, positions: [...state.positions, action.payload]}
     case "GOTO_MOVE":
       return {...state, currentMove: action.payload}
     case "CLEAR_BOARD":

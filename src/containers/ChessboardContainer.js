@@ -6,7 +6,6 @@ import {addMove, gotoMove, clearBoard} from "../actions/boardActions"
 class ChessboardContainer extends Component {
 
   handleMove = event => {
-    console.log(event)
     this.props.addMove(event)
   }
 
@@ -22,9 +21,9 @@ class ChessboardContainer extends Component {
     const moveNum = this.props.currentMove
     return (
       <>
-      <Chessboard position={this.props.positions[moveNum]} width="400"/>
-      <button onClick={this.clearBoard}> Clear </button>
-      <button onClick={this.gotoMove(1)}> Go to move 2  </button>
+        <Chessboard position="start" width="400" getPosition={this.handleMove}/>
+        <button onClick={this.clearBoard}> Clear </button>
+        <button onClick={() => this.gotoMove(1)}> Go to move 2  </button>
       </>
     )
   }
