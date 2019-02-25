@@ -7,7 +7,7 @@ const rootReducer = combineReducers({
 function boardReducer(state={
   currentMove: 0,
   positions: ["start"],
-  fetchedGame: {gameId: "", names: ""},
+  fetchedGame: {gameId: "", names: "", moves: []},
   gameIds: []}, action = {}){
   switch (action.type){
     case "ADD_MOVE":
@@ -26,10 +26,13 @@ function boardReducer(state={
         positions: ["start"]}
     case "LOADING_GAME":
       return state
-    case "DISPLAY_GAME":
+    case "FIND_GAME":
       const topGame = action.payload.topGames[0]
       const names = `${topGame.white.name} vs. ${topGame.black.name}`
-      return {...state, fetchedGame: {id: topGame.id, names }}
+      return {...state, fetchedGame: {gameId: topGame.id, names }}
+    case "DISPLAY_GAME":
+      const moveList = action.payload.split("\n").slice(-1)[0]
+      return {...state, fetchedGame: {...state.fetchedGame, moves: moveList}}
     default:
       return state
   }
