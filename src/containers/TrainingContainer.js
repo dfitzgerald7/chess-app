@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import {addMove} from "../actions/boardActions"
 import {fetchGame, displayGame } from "../actions/trainingActions"
 import InfoBar from "../stateless/InfoBar"
+import MoveList from "../stateless/Moves"
 
 import Chess from "chess.js";
 
@@ -30,6 +31,14 @@ class TrainingContainer extends Component {
     this.props.displayGame(this.props.fetchedGame.gameId)
   }
 
+  nextMove = () => {
+    const {moves} = this.props.fetchedGame
+    const newMove = moves[this.props.currentMove]
+    console.log(newMove)
+    chess.move(newMove)
+    this.props.addMove(chess.fen())
+  }
+
   render() {
     return (
       <>
@@ -37,6 +46,9 @@ class TrainingContainer extends Component {
         <Chessboard position={this.props.positions[this.props.currentMove]} onDrop={this.onDrop} width="400"/>
         <button onClick={this.handleClick}> Find a game with the same opening! </button>
         <button onClick={this.displayGame}> Display this game! </button>
+        <button onClick={this.nextMove}> Next Move </button>
+
+
       </>
     )
   }
