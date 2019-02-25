@@ -1,29 +1,42 @@
 import React, { Component } from "react"
 import Chessboard from "chessboardjsx"
 import { connect } from "react-redux"
-import {addMove, gotoMove, clearBoard} from "../actions/boardActions"
+import {addMove, clearBoard} from "../actions/boardActions"
+import Chess from "chess.js";
 
-class ChessboardContainer extends Component {
+const chess = new Chess();
 
-  handleMove = event => {
-    this.props.addMove(event)
+ class ChessboardContainer extends Component {
+//
+  onDrop = moveObj => { //code from chessboardjsx
+    // debugger;
+    const move = chess.move({
+      from: moveObj.sourceSquare,
+      to: moveObj.targetSquare
+    });
+    if (move === null) return;   // illegal move
+    this.props.addMove(chess.fen())
+  };
+
+  handleDrop = event => {
+
   }
 
-  gotoMove = num => {
-    this.props.gotoMove(num)
-  }
+  // gotoMove = num => {
+  //
+  //   this.props.gotoMove(num)
+  // }
 
   clearBoard = () => {
+    chess.reset()
     this.props.clearBoard()
   }
 
   render() {
-    const moveNum = this.props.currentMove
     return (
       <>
-        <Chessboard position="start" width="400" getPosition={this.handleMove}/>
+        <Chessboard position={this.props.positions[(this.props.currentMove)]} width="400" onDrop={this.onDrop} />
         <button onClick={this.clearBoard}> Clear </button>
-        <button onClick={() => this.gotoMove(1)}> Go to move 2  </button>
       </>
     )
   }
@@ -35,4 +48,6 @@ const mapStateToProps = state => ({
   currentMove: state.board.currentMove
 })
 
-export default connect(mapStateToProps, { addMove, gotoMove, clearBoard })(ChessboardContainer)
+
+
+export default connect(mapStateToProps, { addMove, clearBoard })(ChessboardContainer)
