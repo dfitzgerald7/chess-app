@@ -11,13 +11,14 @@ const clearBoard = () => ({
   type: "CLEAR_BOARD"
 })
 
-const saveGame = gameMoves => ({
-  return (dispatch) => {
-    dispatch({type: "SAVING_GAME"})
-    return (
-      fetch("http://localhost:5000/")
-    )
-  })
-})
+const savePosition = boardObject => {
+  fetch("http://localhost:5000/games", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({game: boardObject})}
+  ).then(resp => resp.json()).then(resp => console.log(resp))
+}
 
-export { addMove, gotoNextMove, clearBoard }
+export { addMove, gotoNextMove, clearBoard, savePosition}

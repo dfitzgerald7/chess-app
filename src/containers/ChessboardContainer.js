@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import Chessboard from "chessboardjsx"
 import { connect } from "react-redux"
-import {addMove, clearBoard} from "../actions/boardActions"
+import {addMove, clearBoard, savePosition} from "../actions/boardActions"
 import Chess from "chess.js";
 
 const chess = new Chess();
@@ -31,8 +31,9 @@ const chess = new Chess();
     this.props.clearBoard()
   }
 
-  saveGame = () => {
-    this.props.saveGame({fen: chess.fen(), move_count: this.props.currentMove})
+  handleSavePosition = () => {
+    const myFen = chess.fen()
+    savePosition({fen: myFen, move_count: this.props.currentMove})
   }
 
   render() {
@@ -41,7 +42,7 @@ const chess = new Chess();
         <h3> {this.props.turn} to move. </h3>
         <Chessboard position={this.props.positions[(this.props.currentMove)]} width="400" onDrop={this.onDrop} />
         <button onClick={this.clearBoard}> New Game </button>
-        <button onClick={this.saveGame} > Save this position </button>
+        <button onClick={this.handleSavePosition} > Save this position </button>
       </>
     )
   }
@@ -56,4 +57,4 @@ const mapStateToProps = state => ({
 
 
 
-export default connect(mapStateToProps, { addMove, clearBoard })(ChessboardContainer)
+export default connect(mapStateToProps, { addMove, clearBoard, savePosition })(ChessboardContainer)
