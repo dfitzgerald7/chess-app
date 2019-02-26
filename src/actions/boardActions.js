@@ -11,4 +11,13 @@ const clearBoard = () => ({
   type: "CLEAR_BOARD"
 })
 
+// const saveGame = gameMoves => ({
+//   return (dispatch => {
+//     dispatch({type: "LOADING_GAME"})
+//     return (
+//       //post request with gameMoves
+//     )
+//   })
+// })
+
 export { addMove, gotoNextMove, clearBoard }
