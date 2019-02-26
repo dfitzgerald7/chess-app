@@ -31,9 +31,8 @@ const chess = new Chess();
     this.props.clearBoard()
   }
 
-  componentDidUpdate(){
-
-
+  saveGame = () => {
+    this.props.saveGame({fen: chess.fen(), move_count: this.props.currentMove})
   }
 
   render() {
@@ -41,7 +40,8 @@ const chess = new Chess();
       <>
         <h3> {this.props.turn} to move. </h3>
         <Chessboard position={this.props.positions[(this.props.currentMove)]} width="400" onDrop={this.onDrop} />
-        <button onClick={this.clearBoard}> Clear </button>
+        <button onClick={this.clearBoard}> New Game </button>
+        <button onClick={this.saveGame} > Save this position </button>
       </>
     )
   }

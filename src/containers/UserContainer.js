@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 // import { connect } from "react-redux"
-import { signup } from "../actions/userActions"
+import { signup, login } from "../actions/userActions"
 
 class UserContainer extends Component {
   state = {
@@ -18,6 +18,7 @@ class UserContainer extends Component {
   onSubmit = event => {
     event.preventDefault()
     signup(this.state)
+    login(this.state)
   }
 
   render() {

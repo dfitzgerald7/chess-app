@@ -11,13 +11,13 @@ const clearBoard = () => ({
   type: "CLEAR_BOARD"
 })
 
-// const saveGame = gameMoves => ({
-//   return (dispatch => {
-//     dispatch({type: "LOADING_GAME"})
-//     return (
-//       //post request with gameMoves
-//     )
-//   })
-// })
+const saveGame = gameMoves => ({
+  return (dispatch) => {
+    dispatch({type: "SAVING_GAME"})
+    return (
+      fetch("http://localhost:5000/")
+    )
+  })
+})
 
 export { addMove, gotoNextMove, clearBoard }
