@@ -44,7 +44,6 @@ class TrainingContainer extends Component {
       <>
         <InfoBar names={this.props.fetchedGame.names} />
         <Chessboard position={this.props.positions[this.props.currentMove]} onDrop={this.onDrop} width="400"/>
-        {this.renderButton()}
         <button onClick={this.handleClick}> Find a game with the same opening! </button>
         <button onClick={this.displayGame}> Display this game! </button>
         <button onClick={this.nextMove}> Next Move </button>

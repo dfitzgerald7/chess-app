@@ -18,18 +18,19 @@ const chess = new Chess();
     this.props.addMove(chess.fen())
   };
 
-  handleDrop = event => {
-
-  }
-
-  // gotoMove = num => {
-  //
-  //   this.props.gotoMove(num)
-  // }
 
   clearBoard = () => {
     chess.reset()
     this.props.clearBoard()
+  }
+
+  componentDidUpdate(){
+    if (chess.game_over()){
+      console.log("game over")
+    }else{
+      console.log("naht")
+    }
+
   }
 
   render() {
