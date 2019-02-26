@@ -15,8 +15,8 @@ class App extends Component {
             <Route exact path="/" component={Home}/>
             <Route path="/games/new" component={ChessboardContainer}/>
             <Route path="/training/new" component={TrainingContainer}/>
-            <Route path="/signup" component={UserContainer} isSignup={true}/>
-            <Route path="/login" component={UserContainer} signup={false}/>
+            <Route path="/signup" render={(props) => <UserContainer {...props} isSignup={true} />}/>
+            <Route path="/login" render={(props) => <UserContainer {...props} isSignup={false} />}/>
           </header>
         </div>
     );
