@@ -1,7 +1,8 @@
 import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
-  board: boardReducer
+  board: boardReducer,
+  user: userReducer
 })
 
 function boardReducer(state={
@@ -41,15 +42,18 @@ function boardReducer(state={
   }
 }
 
-// function trainingReducer(state={
-//     names: "",
-//     moves: [],
-//     currentPos: "start"
-//   }, action){
-//     switch (action.type){
-//     default:
-//       return state
-//     }
-// }
+function userReducer(state={
+    userId: "",
+    games: []
+  }, action){
+    switch (action.type){
+    case ("ADD_USER_GAMES"):
+      let posArr = [];
+      action.payload.forEach(game => posArr.push(game))
+      return {...state, games: posArr}
+    default:
+      return state
+    }
+}
 
 export default rootReducer
