@@ -7,6 +7,10 @@ import Chess from "chess.js";
 const chess = new Chess();
 
  class ChessboardContainer extends Component {
+
+   state = {
+     status: "White to move."
+   }
 //
   onDrop = moveObj => { //code from chessboardjsx
     // debugger;
@@ -15,6 +19,9 @@ const chess = new Chess();
       to: moveObj.targetSquare
     });
     if (move === null) return;   // illegal move
+    if (chess.game_over()){
+      alert(`${this.props.turn} wins!` )
+    }
     this.props.addMove(chess.fen())
   };
 
@@ -25,17 +32,14 @@ const chess = new Chess();
   }
 
   componentDidUpdate(){
-    if (chess.game_over()){
-      console.log("game over")
-    }else{
-      console.log("naht")
-    }
+
 
   }
 
   render() {
     return (
       <>
+        <h3> {this.props.turn} to move. </h3>
         <Chessboard position={this.props.positions[(this.props.currentMove)]} width="400" onDrop={this.onDrop} />
         <button onClick={this.clearBoard}> Clear </button>
       </>
@@ -46,7 +50,8 @@ const chess = new Chess();
 
 const mapStateToProps = state => ({
   positions: state.board.positions,
-  currentMove: state.board.currentMove
+  currentMove: state.board.currentMove,
+  turn: state.board.turn
 })
 
 

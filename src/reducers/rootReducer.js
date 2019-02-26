@@ -7,18 +7,21 @@ const rootReducer = combineReducers({
 function boardReducer(state={
   currentMove: 0,
   positions: ["start"],
+  turn: "White",
   fetchedGame: {gameId: "", names: "", moves: [], fetchedCurrentMove: 0},
   gameIds: []}, action = {}){
   switch (action.type){
     case "ADD_MOVE":
       const newMove = state.currentMove + 1
-      return {...state, currentMove: newMove, positions: [...state.positions, action.payload]}
+      let newTurn = newMove % 2 === 0 ? "White" : "Black"
+      return {...state, currentMove: newMove, positions: [...state.positions, action.payload], turn: newTurn}
     case "GOTO_NEXT_MOVE":
       return {...state, currentMove: action.payload}
     case "CLEAR_BOARD":
       return {
         ...state,
         currentMove: 0,
+        turn: "White",
         positions: ["start"]}
     case "LOADING_GAME":
       return state
