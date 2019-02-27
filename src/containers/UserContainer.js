@@ -22,7 +22,6 @@ class UserContainer extends Component {
   }
 
   render() {
-    console.log(this.props.isSignup)
     let email;
     if (this.props.isSignup) {
       email = <input type="text" value={this.state.email} onChange={this.onChange} name="email"/>

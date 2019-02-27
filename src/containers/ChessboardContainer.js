@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import Chessboard from "chessboardjsx"
 import { connect } from "react-redux"
-import {addMove, clearBoard, savePosition, userPositions} from "../actions/boardActions"
+import {addMove, clearBoard, savePosition, userPositions, gotoMove} from "../actions/boardActions"
 import Chess from "chess.js";
 
 const chess = new Chess();
@@ -35,6 +35,11 @@ const chess = new Chess();
     savePosition({fen: chess.fen(), move_count: this.props.currentMove})
   }
 
+  handleClick = game => {
+    console.log("game", game)
+    this.props.gotoMove(game)
+  }
+
   componentDidMount() {
     this.props.userPositions(1)
   }
@@ -47,7 +52,8 @@ const chess = new Chess();
         <button onClick={this.clearBoard}> New Game </button>
         <button onClick={this.handleSavePosition} > Save this position </button>
         <ul id="user-positions">
-            {this.props.userGames.map((game, index) => <li key={game.id}> Game {index+1} </li>)}
+            {this.props.userGames.map((game, index) => (
+              <button key={game.id} onClick={() => this.handleClick(game)}> Game {index+1} </button>))}
         </ul>
       </>
     )
@@ -64,4 +70,4 @@ const mapStateToProps = state => ({
 
 
 
-export default connect(mapStateToProps, { addMove, clearBoard, savePosition, userPositions })(ChessboardContainer)
+export default connect(mapStateToProps, { addMove, clearBoard, savePosition, userPositions, gotoMove })(ChessboardContainer)

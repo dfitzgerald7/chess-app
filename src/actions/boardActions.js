@@ -3,8 +3,8 @@ const addMove = currentPos => ({
   type: "ADD_MOVE", payload: currentPos
 })
 
-const gotoNextMove = moveNum => ({
-  type: "GOTO_NEXT_MOVE"
+const gotoMove = position => ({
+  type: "GOTO_MOVE", payload: position
 })
 
 const clearBoard = () => ({
@@ -28,4 +28,4 @@ const userPositions = userId => {
   })
 }
 
-export { addMove, gotoNextMove, clearBoard, savePosition, userPositions}
+export { addMove, gotoMove, clearBoard, savePosition, userPositions}
