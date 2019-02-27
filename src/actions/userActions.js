@@ -22,4 +22,6 @@ const login = ({ email, password }) => {
   }).then(resp => resp.json()).then(resp => localStorage.setItem("token",resp.jwt))
 }
 
+
+
 export { signup, login }

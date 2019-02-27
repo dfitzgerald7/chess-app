@@ -24,7 +24,7 @@ const savePosition = boardObject => { /// hard coded user id in. CHANGE to DYNAM
 
 const userPositions = userId => {
   return dispatch =>
-    fetch(`http://localhost:5000/users/${userId}/games`, {
+    fetch(`http://localhost:5000/games`, {
       headers: {
         'Content-Type': 'application/json',
         "Authorization": `Bearer ${localStorage.getItem("token")}`

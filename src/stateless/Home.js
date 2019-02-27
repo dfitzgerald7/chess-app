@@ -5,7 +5,7 @@ import {
 
 const Home = () => {
   let links;
-  if (localStorage.getItem("token")){
+  if (localStorage.getItem("token") ){
       links = (
         <>
         <h3> Click to start a new game or training session. </h3>
@@ -16,7 +16,7 @@ const Home = () => {
       links = (
       <>
       <h3> Sign up or Log in to begin. </h3>
-        <Link to="signup"> Sign Up </Link> <br/>
+        <Link to="/signup"> Sign Up </Link> <br/>
         <Link to="/login"> Log In </Link>
       </>
     )}

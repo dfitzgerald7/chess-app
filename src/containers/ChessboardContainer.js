@@ -42,7 +42,7 @@ const chess = new Chess();
   }
 
   componentDidMount() {
-    this.props.userPositions(1)
+    this.props.userPositions()
   }
 
   render() {
