@@ -16,7 +16,7 @@ const displayGame = gameId => {
     return (
       fetch("https://explorer.lichess.ovh/master/pgn/" + gameId )
       .then(resp => resp.text())
-      .then(game => dispatch({type: "DISPLAY_GAME", payload: game})
+      .then(games => dispatch({type: "DISPLAY_GAME", payload: games})
     ))
   })}
 export { fetchGame, displayGame }

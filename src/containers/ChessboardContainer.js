@@ -35,10 +35,10 @@ const chess = new Chess();
     savePosition({fen: chess.fen(), move_count: this.props.currentMove})
   }
 
-  // handleClick = game => {
-  //   chess.load(game.fen)
-  //   this.props.gotoMove(game)
-  // }
+  handleClick = game => {
+    chess.load(game.fen)
+    this.props.gotoMove(game)
+  }
 
   componentDidMount() {
     this.props.userPositions(1)

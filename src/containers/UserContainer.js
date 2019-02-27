@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-// import { connect } from "react-redux"
+import { connect } from "react-redux"
 import { signup, login } from "../actions/userActions"
 
 class UserContainer extends Component {
@@ -17,19 +17,20 @@ class UserContainer extends Component {
 
   onSubmit = event => {
     event.preventDefault()
-    // signup(this.state)
-    login(this.state)
+    // this.props.signup(this.state)
+    this.props.login(this.state)
   }
 
   render() {
-    let email;
+    let username;
     if (this.props.isSignup) {
-      email = <input type="text" value={this.state.email} onChange={this.onChange} name="email"/>
+      username = <input type="text" value={this.state.username} name="username" onChange={this.onChange}/>
+
     }
     return (
       <form onSubmit={this.onSubmit}>
-        {email}
-        <input type="text" value={this.state.username} name="username" onChange={this.onChange}/>
+        {username}
+        <input type="text" value={this.state.email} onChange={this.onChange} name="email"/>
         <input type="text" value={this.state.password} name="password" onChange={this.onChange}/>
         <input type="submit" />
       </form>
@@ -37,4 +38,4 @@ class UserContainer extends Component {
   }
 }
 
-export default UserContainer
+export default connect(null, { signup, login })(UserContainer)
