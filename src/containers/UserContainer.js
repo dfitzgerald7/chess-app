@@ -18,8 +18,7 @@ class UserContainer extends Component {
   onSubmit = event => {
     event.preventDefault()
     // this.props.signup(this.state)
-    this.props.login(this.state)
-    this.props.history.push("/")
+    this.props.login(this.state, this.props.history)
   }
 
   render() {

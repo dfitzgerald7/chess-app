@@ -10,18 +10,23 @@ const signup = userObject => {
   }).then(resp => console.log("users", resp))
 }
 
-const login = ({ email, password }) => {
+const login = ({ email, password }, history) => {
   return dispatch =>
   fetch("http://localhost:5000/user_token",{
     method: "POST",
     headers: {
-      'Content-Type': 'application/json'
-         //"Authorization": `Bearer ${localStorage.getItem("token")}`
+      'Content-Type': 'application/json',
+       "Authorization": `Bearer ${localStorage.getItem("token")}`
     },
     body: JSON.stringify({auth: {email: email, password: password}})
-  }).then(resp => resp.json()).then(resp => localStorage.setItem("token",resp.jwt))
+  }).then(resp => resp.json())
+  .then(resp => {
+    localStorage.setItem("token",resp.jwt)
+    history.push("/")})
 }
 
-
-
-export { signup, login }
+const logout = history => {
+  localStorage.removeItem("token")
+  history.push("/")
+}
+export { signup, login, logout }
