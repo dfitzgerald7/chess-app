@@ -19,6 +19,7 @@ class UserContainer extends Component {
     event.preventDefault()
     // this.props.signup(this.state)
     this.props.login(this.state)
+    this.props.history.push("/")
   }
 
   render() {

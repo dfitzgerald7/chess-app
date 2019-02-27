@@ -19,7 +19,7 @@ const login = ({ email, password }) => {
          //"Authorization": `Bearer ${localStorage.getItem("token")}`
     },
     body: JSON.stringify({auth: {email: email, password: password}})
-  }).then(resp => resp.json()).then(resp => console.log(resp.jwt))
+  }).then(resp => resp.json()).then(resp => localStorage.setItem("token",resp.jwt))
 }
 
 export { signup, login }

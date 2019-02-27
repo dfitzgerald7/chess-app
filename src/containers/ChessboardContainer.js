@@ -9,7 +9,6 @@ const chess = new Chess();
  class ChessboardContainer extends Component {
 
    state = {
-     status: "White to move.",
      userGames: []
    }
 //
@@ -22,8 +21,10 @@ const chess = new Chess();
     if (move === null) return;   // illegal move
     if (chess.game_over()){
       alert(`${this.props.turn} wins!` )
+      this.clearBoard()
+    } else {
+      this.props.addMove(chess.fen())
     }
-    this.props.addMove(chess.fen())
   };
 
   clearBoard = () => {

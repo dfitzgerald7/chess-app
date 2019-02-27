@@ -15,17 +15,22 @@ const savePosition = boardObject => { /// hard coded user id in. CHANGE to DYNAM
   fetch("http://localhost:5000/games", {
     method: "POST",
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      "Authorization": `Bearer ${localStorage.getItem("token")}`
     },
     body: JSON.stringify({game: {...boardObject, user_id: 1}})}
   ).then(resp => resp.json()).then(resp => console.log(resp))
 }
 
 const userPositions = userId => {
-  return (dispatch => {
-  fetch(`http://localhost:5000/users/${userId}/games`)
-  .then(resp => resp.json()).then(resp => dispatch({type: "ADD_USER_GAMES", payload: resp}))
-  })
+  return dispatch =>
+    fetch(`http://localhost:5000/users/${userId}/games`, {
+      headers: {
+        'Content-Type': 'application/json',
+        "Authorization": `Bearer ${localStorage.getItem("token")}`
+      }
+    })
+    .then(resp => resp.json()).then(resp => dispatch({type: "ADD_USER_GAMES", payload: resp}))
 }
 
 export { addMove, gotoMove, clearBoard, savePosition, userPositions}
