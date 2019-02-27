@@ -36,7 +36,7 @@ const chess = new Chess();
   }
 
   handleClick = game => {
-    console.log("game", game)
+    chess.load(game.fen)
     this.props.gotoMove(game)
   }
 
@@ -45,6 +45,7 @@ const chess = new Chess();
   }
 
   render() {
+    console.log(this.props)
     return (
       <>
         <h3> {this.props.turn} to move. </h3>

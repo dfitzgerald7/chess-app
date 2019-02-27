@@ -14,7 +14,7 @@ function boardReducer(state={
   switch (action.type){
     case "ADD_MOVE":
       const newMove = state.currentMove + 1
-      let newTurn = newMove % 2 === 0 ? "White" : "Black"
+      let newTurn = state.turn === "Black" ? "White" : "Black"
       return {...state, currentMove: newMove, positions: [...state.positions, action.payload], turn: newTurn}
     case "GOTO_MOVE":
     console.log(action.payload)
