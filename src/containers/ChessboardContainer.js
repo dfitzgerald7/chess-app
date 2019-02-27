@@ -35,10 +35,10 @@ const chess = new Chess();
     savePosition({fen: chess.fen(), move_count: this.props.currentMove})
   }
 
-  handleClick = game => {
-    chess.load(game.fen)
-    this.props.gotoMove(game)
-  }
+  // handleClick = game => {
+  //   chess.load(game.fen)
+  //   this.props.gotoMove(game)
+  // }
 
   componentDidMount() {
     this.props.userPositions(1)
@@ -49,7 +49,10 @@ const chess = new Chess();
     return (
       <>
         <h3> {this.props.turn} to move. </h3>
-        <Chessboard position={this.props.positions[(this.props.currentMove)]} width="400" onDrop={this.onDrop} />
+        <Chessboard position={this.props.positions[(this.props.currentMove)]}
+          width="400"
+          onDrop={this.onDrop}
+          orientation={this.props.turn.toLowerCase()} />
         <button onClick={this.clearBoard}> New Game </button>
         <button onClick={this.handleSavePosition} > Save this position </button>
         <ul id="user-positions">
