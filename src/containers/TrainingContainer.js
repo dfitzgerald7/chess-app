@@ -3,8 +3,10 @@ import Chessboard from "chessboardjsx"
 import { connect } from "react-redux"
 import {addMove, userPositions, gotoMove} from "../actions/boardActions"
 import {fetchGame, displayGame } from "../actions/trainingActions"
+import UserGames from "../stateless/UserGames"
 import InfoBar from "../stateless/InfoBar"
 import MoveList from "../stateless/MovesList"
+import Grid from '@material-ui/core/Grid';
 
 import Chess from "chess.js";
 
@@ -65,15 +67,12 @@ class TrainingContainer extends Component {
   render() {
     return (
       <>
+      <Grid item xs={12} >
         <InfoBar names={this.props.fetchedGame.names} />
         <Chessboard position={this.props.positions[this.props.currentMove]} onDrop={this.onDrop} width="400"/>
+      </Grid >
         {this.renderButton()}
-        <ul id="user-positions">
-            {this.props.userGames.map((game, index) => (
-              <button key={game.id} onClick={() => this.handleUserGameClick(game)}> Game {index+1} </button>))}
-        </ul>
-
-
+      <UserGames userGames={this.props.userGames} handleUserGameClick={this.handleUserGameClick} />
       </>
     )
   }

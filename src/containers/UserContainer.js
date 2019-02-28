@@ -30,7 +30,7 @@ class UserContainer extends Component {
 
     }
     return (
-      <form onSubmit={this.onSubmit}>
+      <form onSubmit={this.onSubmit}> 
         {username}
         <input type="text" value={this.state.email} onChange={this.onChange} name="email"/>
         <input type="text" value={this.state.password} name="password" onChange={this.onChange}/>
