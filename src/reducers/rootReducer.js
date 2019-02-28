@@ -9,7 +9,7 @@ function boardReducer(state={
   currentMove: 0,
   positions: ["start"],
   turn: "White",
-  fetchedGame: {gameId: "", names: "", moves: [], fetchedCurrentMove: 0}}, action = {}){ // might delete gameIds from here
+  fetchedGame: {gameId: "", names: "", moves: [], fetchedCurrentMove: 0, displayMoves: []}}, action = {}){ // might delete gameIds from here
   switch (action.type){
     case "ADD_MOVE":
       const newMove = state.currentMove + 1

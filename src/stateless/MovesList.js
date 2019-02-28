@@ -1,11 +1,13 @@
 import React from "react"
 
 const MoveList = props => {
-
   return (
-    <ul>
-      {props.game.moves.map(move => <li> {move} </li>)}
-    </ul>
+    <>
+      <h4> Move List </h4>
+      <ol>
+        {props.moves.map((move, index) => <li key={index}> {move} </li>)}
+      </ol>
+    </>
   )
 }
 

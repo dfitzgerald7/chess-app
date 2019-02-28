@@ -49,9 +49,13 @@ class TrainingContainer extends Component {
   }
 
   renderButton = () => {
-    console.log(this.props.fetchedGame)
     if (this.props.fetchedGame.moves.length !== 0) {
-      return <button onClick={this.nextMove}> Next Move </button>
+      return (
+        <>
+        <button onClick={this.nextMove}> Next Move </button>
+        <MoveList moves={this.props.fetchedGame.moves} />
+        </>
+      )
     } else if (this.props.fetchedGame.gameId) {
       return <button onClick={this.displayGame}> Display this game! </button>
     } else
