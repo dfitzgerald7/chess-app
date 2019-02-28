@@ -34,7 +34,6 @@ class TrainingContainer extends Component {
   nextMove = () => {
     const {moves} = this.props.fetchedGame
     const newMove = moves[this.props.currentMove]
-    console.log(newMove)
     chess.move(newMove)
     this.props.addMove(chess.fen())
   }

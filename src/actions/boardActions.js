@@ -18,7 +18,7 @@ const savePosition = boardObject => { /// hard coded user id in. CHANGE to DYNAM
       'Content-Type': 'application/json',
       "Authorization": `Bearer ${localStorage.getItem("token")}`
     },
-    body: JSON.stringify({game: {...boardObject, user_id: 1}})}
+    body: JSON.stringify({game: boardObject})}
   ).then(resp => resp.json()).then(resp => console.log(resp))
 }
 

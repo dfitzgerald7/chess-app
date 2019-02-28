@@ -17,7 +17,9 @@ class UserContainer extends Component {
 
   onSubmit = event => {
     event.preventDefault()
-    // this.props.signup(this.state)
+    if (this.props.isSignup){
+      this.props.signup(this.state)
+    }
     this.props.login(this.state, this.props.history)
   }
 
