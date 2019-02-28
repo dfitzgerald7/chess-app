@@ -9,8 +9,7 @@ function boardReducer(state={
   currentMove: 0,
   positions: ["start"],
   turn: "White",
-  fetchedGame: {gameId: "", names: "", moves: [], fetchedCurrentMove: 0},
-  gameIds: []}, action = {}){ // might delete gameIds from here
+  fetchedGame: {gameId: "", names: "", moves: [], fetchedCurrentMove: 0}}, action = {}){ // might delete gameIds from here
   switch (action.type){
     case "ADD_MOVE":
       const newMove = state.currentMove + 1
@@ -48,7 +47,6 @@ function boardReducer(state={
 }
 
 function userReducer(state={
-    userId: "",
     games: []
   }, action){
     switch (action.type){
@@ -56,8 +54,9 @@ function userReducer(state={
       let posArr = [];
       action.payload.forEach(game => posArr.push(game))
       return {...state, games: posArr}
-    case ("SET_USER_ID"): //TODO
-      return state
+    case ("ADD_SAVED_GAME"): //TODO
+      // const newArr = state.games.push(action.payload)
+      return {games: [...state.games, action.payload]}
     default:
       return state
     }

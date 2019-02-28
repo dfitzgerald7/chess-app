@@ -8,9 +8,9 @@ const chess = new Chess();
 
  class ChessboardContainer extends Component {
 
-   state = {
-     userGames: []
-   }
+   // state = {
+   //   userGames: []
+   // }
 //
   onDrop = moveObj => { //code from chessboardjsx
     // debugger;
@@ -33,7 +33,7 @@ const chess = new Chess();
   }
 
   handleSavePosition = () => {
-    savePosition({fen: chess.fen(), move_count: this.props.currentMove})
+    this.props.savePosition({fen: chess.fen(), move_count: this.props.currentMove})
   }
 
   handleClick = game => {
@@ -46,7 +46,7 @@ const chess = new Chess();
   }
 
   render() {
-    console.log(this.props)
+    console.log(this.props.userGames)
     return (
       <>
         <h3> {this.props.turn} to move. </h3>
