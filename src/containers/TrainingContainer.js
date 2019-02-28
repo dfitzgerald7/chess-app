@@ -68,7 +68,7 @@ class TrainingContainer extends Component {
     return (
       <>
       <Grid item xs={12} >
-        <InfoBar names={this.props.fetchedGame.names} />
+        <InfoBar names={this.props.fetchedGame.names} gameId={this.props.gameId}/>
         <Chessboard position={this.props.positions[this.props.currentMove]} onDrop={this.onDrop} width="400"/>
       </Grid >
         {this.renderButton()}
@@ -84,7 +84,8 @@ const mapStateToProps = state => ({
   fetchedGame: state.board.fetchedGame,
   currentMove: state.board.currentMove,
   names: state.board.names,
-  userGames: state.user.games
+  userGames: state.user.games,
+  gameId: state.board.gameId
 })
 
 export default connect(mapStateToProps, {addMove, fetchGame, displayGame, userPositions, gotoMove})(TrainingContainer)

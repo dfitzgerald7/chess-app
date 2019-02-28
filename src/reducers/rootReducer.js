@@ -8,6 +8,7 @@ const rootReducer = combineReducers({
 function boardReducer(state={
   currentMove: 0,
   positions: ["start"],
+  gameId: "",
   turn: "White",
   fetchedGame: {gameId: "", names: "", moves: [], fetchedCurrentMove: 0, displayMoves: []}}, action = {}){ // might delete gameIds from here
   switch (action.type){
@@ -17,11 +18,11 @@ function boardReducer(state={
       return {...state, currentMove: newMove, positions: [...state.positions, action.payload], turn: newTurn}
     case "GOTO_MOVE":
     console.log(action.payload)
-      const {move_count, fen} = action.payload
+      const {move_count, fen, id} = action.payload
       let turn = move_count % 2 === 0 ? "White" : "Black"
       let posArr = [];
       for (let i=0; i <= move_count; i++) {posArr.push(fen)}
-      return {...state, positions: posArr, currentMove: move_count, turn: turn }
+      return {...state, positions: posArr, currentMove: move_count, turn: turn, gameId: id }
       //very hacky, if i saved the full array I could use current move but I
       //have to reset it to 0
     case "CLEAR_BOARD":
