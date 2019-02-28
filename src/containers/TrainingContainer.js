@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import {addMove, userPositions, gotoMove} from "../actions/boardActions"
 import {fetchGame, displayGame } from "../actions/trainingActions"
 import InfoBar from "../stateless/InfoBar"
-import MoveList from "../stateless/Moves"
+import MoveList from "../stateless/MovesList"
 
 import Chess from "chess.js";
 
@@ -48,18 +48,27 @@ class TrainingContainer extends Component {
     this.props.userPositions()
   }
 
+  renderButton = () => {
+    console.log(this.props.fetchedGame)
+    if (this.props.fetchedGame.moves.length !== 0) {
+      return <button onClick={this.nextMove}> Next Move </button>
+    } else if (this.props.fetchedGame.gameId) {
+      return <button onClick={this.displayGame}> Display this game! </button>
+    } else
+    return <button onClick={this.handleClick}> Find a game with the same opening! </button>
+  }
+
   render() {
     return (
       <>
         <InfoBar names={this.props.fetchedGame.names} />
         <Chessboard position={this.props.positions[this.props.currentMove]} onDrop={this.onDrop} width="400"/>
-        <button onClick={this.handleClick}> Find a game with the same opening! </button>
-        <button onClick={this.displayGame}> Display this game! </button>
-        <button onClick={this.nextMove}> Next Move </button>
+        {this.renderButton()}
         <ul id="user-positions">
             {this.props.userGames.map((game, index) => (
               <button key={game.id} onClick={() => this.handleUserGameClick(game)}> Game {index+1} </button>))}
         </ul>
+
 
       </>
     )

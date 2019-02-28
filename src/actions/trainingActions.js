@@ -5,7 +5,9 @@ const fetchGame = fen => {
     dispatch({type: "LOADING_GAME"})
     return (
       fetch("https://explorer.lichess.ovh/master?fen=" + fen)
-      .then(resp => resp.json()).then(game => dispatch({type: "FIND_GAME", payload: game}))
+      .then(resp => resp.json()).then(game => {
+        dispatch({type: "FIND_GAME", payload: game})
+      })
     )
   })
 }

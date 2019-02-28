@@ -39,7 +39,7 @@ function boardReducer(state={
       } else {
       const topGame = action.payload.topGames[0]
       const names = `${topGame.white.name} vs. ${topGame.black.name}`
-      return {...state, fetchedGame: {gameId: topGame.id, names }}}
+      return {...state, fetchedGame: {...state.fetchedGame, gameId: topGame.id, names }}}
     case "DISPLAY_GAME":
       const moveList = action.payload.split("\n").slice(-1)[0]
       const cleanMoveList = moveList.replace(/\d+\. /g, "").split(" ")
