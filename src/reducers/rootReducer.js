@@ -19,7 +19,9 @@ function boardReducer(state={
     console.log(action.payload)
       const {move_count, fen} = action.payload
       let turn = move_count % 2 === 0 ? "White" : "Black"
-      return {...state, positions: [fen], currentMove: 0, turn: turn }
+      let posArr = [];
+      for (let i=0; i <= move_count; i++) {posArr.push(fen)}
+      return {...state, positions: posArr, currentMove: move_count, turn: turn }
       //very hacky, if i saved the full array I could use current move but I
       //have to reset it to 0
     case "CLEAR_BOARD":
@@ -31,13 +33,18 @@ function boardReducer(state={
     case "LOADING_GAME":
       return state
     case "FIND_GAME":
+      if (action.payload.averageRating === 0){
+        alert("No games found.")
+        return state
+      } else {
       const topGame = action.payload.topGames[0]
       const names = `${topGame.white.name} vs. ${topGame.black.name}`
-      return {...state, fetchedGame: {gameId: topGame.id, names }}
+      return {...state, fetchedGame: {gameId: topGame.id, names }}}
     case "DISPLAY_GAME":
       const moveList = action.payload.split("\n").slice(-1)[0]
       const cleanMoveList = moveList.replace(/\d+\. /g, "").split(" ")
-      return {...state, fetchedGame: {...state.fetchedGame, moves: cleanMoveList, displayMoves: moveList}}
+      const moveNum = cleanMoveList.length
+      return {...state, fetchedGame: {...state.fetchedGame, moves: cleanMoveList, displayMoves: moveList, fetchedCurrentMove: moveNum}}
     case "NEXT_FETCHED_GAME":
       const nextMove = state.fetchedGame.fetchedCurrentMove + 1
       return {...state, fetchedGame: {...state.fetchedGame, fetchedCurrentMove: nextMove}}

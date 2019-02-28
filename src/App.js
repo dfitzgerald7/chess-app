@@ -17,7 +17,7 @@ class App extends Component {
             <NavBar history={this.props.history} />
             <Route exact path="/" component={Home}/>
             <Route path="/games/new" component={ChessboardContainer}/>
-            <Route path="/training/new" component={TrainingContainer}/>
+            <Route path="/games" component={TrainingContainer}/>
             <Route path="/signup" render={(props) => <UserContainer {...props} isSignup={true} />}/>
             <Route path="/login" render={(props) => <UserContainer {...props} isSignup={false} />}/>
           </header>

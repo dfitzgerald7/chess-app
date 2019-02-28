@@ -10,7 +10,7 @@ const Home = () => {
         <>
         <h3> Click to start a new game or training session. </h3>
           <Link to="/games/new"> New Game </Link>
-          <Link to="/training/new"> New Training </Link>
+          <Link to="/games"> New Training </Link>
         </>
     )}else{
       links = (

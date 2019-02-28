@@ -36,17 +36,8 @@ const chess = new Chess();
     this.props.savePosition({fen: chess.fen(), move_count: this.props.currentMove})
   }
 
-  handleClick = game => {
-    chess.load(game.fen)
-    this.props.gotoMove(game)
-  }
-
-  componentDidMount() {
-    this.props.userPositions()
-  }
 
   render() {
-    console.log(this.props.userGames)
     return (
       <>
         <h3> {this.props.turn} to move. </h3>
@@ -56,10 +47,7 @@ const chess = new Chess();
           orientation={this.props.turn.toLowerCase()} />
         <button onClick={this.clearBoard}> New Game </button>
         <button onClick={this.handleSavePosition} > Save this position </button>
-        <ul id="user-positions">
-            {this.props.userGames.map((game, index) => (
-              <button key={game.id} onClick={() => this.handleClick(game)}> Game {index+1} </button>))}
-        </ul>
+
       </>
     )
   }
@@ -69,10 +57,9 @@ const chess = new Chess();
 const mapStateToProps = state => ({
   positions: state.board.positions,
   currentMove: state.board.currentMove,
-  turn: state.board.turn,
-  userGames: state.user.games
+  turn: state.board.turn
 })
 
 
 
-export default connect(mapStateToProps, { addMove, clearBoard, savePosition, userPositions, gotoMove })(ChessboardContainer)
+export default connect(mapStateToProps, { addMove, clearBoard, savePosition, gotoMove })(ChessboardContainer)

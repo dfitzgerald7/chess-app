@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import Chessboard from "chessboardjsx"
 import { connect } from "react-redux"
-import {addMove} from "../actions/boardActions"
+import {addMove, userPositions, gotoMove} from "../actions/boardActions"
 import {fetchGame, displayGame } from "../actions/trainingActions"
 import InfoBar from "../stateless/InfoBar"
 import MoveList from "../stateless/Moves"
@@ -24,6 +24,7 @@ class TrainingContainer extends Component {
   };
 
   handleClick = event => {
+    console.log("pos", this.props.positions[this.props.currentMove])
     this.props.fetchGame(this.props.positions[this.props.currentMove])
   }
 
@@ -38,6 +39,15 @@ class TrainingContainer extends Component {
     this.props.addMove(chess.fen())
   }
 
+  handleUserGameClick = game => {
+    chess.load(game.fen)
+    this.props.gotoMove(game)
+  }
+
+  componentDidMount() {
+    this.props.userPositions()
+  }
+
   render() {
     return (
       <>
@@ -46,7 +56,10 @@ class TrainingContainer extends Component {
         <button onClick={this.handleClick}> Find a game with the same opening! </button>
         <button onClick={this.displayGame}> Display this game! </button>
         <button onClick={this.nextMove}> Next Move </button>
-
+        <ul id="user-positions">
+            {this.props.userGames.map((game, index) => (
+              <button key={game.id} onClick={() => this.handleUserGameClick(game)}> Game {index+1} </button>))}
+        </ul>
 
       </>
     )
@@ -58,7 +71,8 @@ const mapStateToProps = state => ({
   positions: state.board.positions,
   fetchedGame: state.board.fetchedGame,
   currentMove: state.board.currentMove,
-  names: state.board.names
+  names: state.board.names,
+  userGames: state.user.games
 })
 
-export default connect(mapStateToProps, {addMove, fetchGame, displayGame})(TrainingContainer)
+export default connect(mapStateToProps, {addMove, fetchGame, displayGame, userPositions, gotoMove})(TrainingContainer)
