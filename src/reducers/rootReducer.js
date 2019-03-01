@@ -65,6 +65,9 @@ function userReducer(state={
     case ("ADD_SAVED_GAME"): //TODO
       // const newArr = state.games.push(action.payload)
       return {games: [...state.games, action.payload]}
+    case ("DELETE_GAME"):
+      const newGames = state.games.filter(game => game.id !== action.payload.id)
+      return {games: newGames}
     default:
       return state
     }

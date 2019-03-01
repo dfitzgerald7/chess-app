@@ -1,15 +1,12 @@
 import React from "react"
-import {deletePosition} from "../actions/boardActions"
+
 const InfoBar = props => {
-  const deleteGame = () => {
-    deletePosition(props.gameId)
-  }
 
   if (props.gameId){
     return (
       <>
         <h3> {props.names} </h3>
-        <button onClick={deleteGame} > Delete this game </button>
+        <button onClick={() => props.deletePosition(props.gameId)} > Delete this game </button>
       </>
     )
   }

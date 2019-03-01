@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import Chessboard from "chessboardjsx"
 import { connect } from "react-redux"
-import {addMove, userPositions, gotoMove} from "../actions/boardActions"
+import {addMove, userPositions, gotoMove, deletePosition} from "../actions/boardActions"
 import {fetchGame, displayGame } from "../actions/trainingActions"
 import UserGames from "../stateless/UserGames"
 import InfoBar from "../stateless/InfoBar"
@@ -68,7 +68,7 @@ class TrainingContainer extends Component {
     return (
       <>
       <Grid item xs={12} >
-        <InfoBar names={this.props.fetchedGame.names} gameId={this.props.gameId}/>
+        <InfoBar names={this.props.fetchedGame.names} gameId={this.props.gameId} deletePosition={this.props.deletePosition}/>
         <Chessboard position={this.props.positions[this.props.currentMove]} onDrop={this.onDrop} width="400"/>
       </Grid >
         {this.renderButton()}
@@ -88,4 +88,4 @@ const mapStateToProps = state => ({
   gameId: state.board.gameId
 })
 
-export default connect(mapStateToProps, {addMove, fetchGame, displayGame, userPositions, gotoMove})(TrainingContainer)
+export default connect(mapStateToProps, {addMove, fetchGame, displayGame, userPositions, gotoMove, deletePosition})(TrainingContainer)

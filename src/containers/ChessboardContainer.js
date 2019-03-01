@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import Chessboard from "chessboardjsx"
 import { connect } from "react-redux"
-import {addMove, clearBoard, savePosition, userPositions, gotoMove} from "../actions/boardActions"
+import {addMove, clearBoard, savePosition, gotoMove} from "../actions/boardActions"
 import Chess from "chess.js";
 
 const chess = new Chess();
