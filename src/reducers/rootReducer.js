@@ -55,7 +55,8 @@ function boardReducer(state={
 }
 
 function userReducer(state={
-    games: []
+    games: [],
+    isLoggedIn: false
   }, action){
     switch (action.type){
     case ("ADD_USER_GAMES"):
@@ -68,6 +69,10 @@ function userReducer(state={
     case ("DELETE_GAME"):
       const newGames = state.games.filter(game => game.id !== action.payload.id)
       return {games: newGames}
+    case "LOG_IN":
+      return {...state, isLoggedIn: true}
+    case "LOG_OUT":
+      return {...state, isLoggedIn: false}
     default:
       return state
     }

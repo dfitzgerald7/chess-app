@@ -1,9 +1,10 @@
 import React from "react"
+import {connect} from "react-redux"
 import {
   Link
 } from 'react-router-dom'
 
-const Home = () => {
+const Home = props => {
   let links;
   if (localStorage.getItem("token") ){
       links = (
@@ -30,4 +31,8 @@ const Home = () => {
   )
 }
 
-export default Home
+const mapStateToProps = state => ({
+  isLoggedIn: state.user.isLoggedIn
+})
+
+export default connect(mapStateToProps)(Home)

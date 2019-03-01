@@ -36,7 +36,7 @@ const userPositions = userId => {
 }
 
  const deletePosition = gameId => {
-   console.log("deletePosition")
+   clearBoard()
    return dispatch =>
     fetch(`http://localhost:5000/games/${gameId}`, {
       method: "DELETE",

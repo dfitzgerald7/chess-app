@@ -72,7 +72,7 @@ class TrainingContainer extends Component {
         <Chessboard position={this.props.positions[this.props.currentMove]} onDrop={this.onDrop} width="400"/>
       </Grid >
         {this.renderButton()}
-      <UserGames userGames={this.props.userGames} handleUserGameClick={this.handleUserGameClick} />
+        <UserGames userGames={this.props.userGames} handleUserGameClick={this.handleUserGameClick} />
       </>
     )
   }
