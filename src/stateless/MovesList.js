@@ -1,13 +1,28 @@
 import React from "react"
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 const MoveList = props => {
   return (
-    <>
-      <h4> Move List </h4>
-      <ol>
-        {props.moves.map((move, index) => <li key={index}> {move} </li>)}
-      </ol>
-    </>
+  <div style={{ height: "1000px", overflow: "auto"}} >
+    <Table className="MoveList" style={{height: 10}}>
+      <TableHead>
+        <TableRow>
+          <TableCell style={{color:"white"}}>Move List </TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {props.moves.map((move, index) => (
+          <TableRow key={index}>
+            <TableCell align="right" style={{color: "white"}}>{index+1}. {move}</TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  </div>
   )
 }
 
