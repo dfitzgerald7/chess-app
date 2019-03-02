@@ -6,7 +6,7 @@ import {fetchGame, displayGame } from "../actions/trainingActions"
 import UserGames from "../stateless/UserGames"
 import InfoBar from "../stateless/InfoBar"
 import MoveList from "../stateless/MovesList"
-import Grid from '@material-ui/core/Grid';
+import Grid from "@material-ui/core/Grid"
 
 import Chess from "chess.js";
 
@@ -55,7 +55,8 @@ class TrainingContainer extends Component {
       return (
         <>
         <button onClick={this.nextMove}> Next Move </button>
-        <MoveList moves={this.props.fetchedGame.moves} />
+
+
         </>
       )
     } else if (this.props.fetchedGame.gameId) {
@@ -66,14 +67,18 @@ class TrainingContainer extends Component {
 
   render() {
     return (
-      <>
-      <Grid item xs={12} >
-        <InfoBar names={this.props.fetchedGame.names} gameId={this.props.gameId} deletePosition={this.props.deletePosition}/>
-        <Chessboard position={this.props.positions[this.props.currentMove]} onDrop={this.onDrop} width="400"/>
-      </Grid >
-        {this.renderButton()}
-        <UserGames userGames={this.props.userGames} handleUserGameClick={this.handleUserGameClick} />
-      </>
+      <Grid container spacing={24} justify="center">
+        <Grid item s={6} >
+          <InfoBar names={this.props.fetchedGame.names} gameId={this.props.gameId} deletePosition={this.props.deletePosition}/>
+          <Chessboard position={this.props.positions[this.props.currentMove]} onDrop={this.onDrop} width="400"/>
+          {this.renderButton()}
+          <UserGames userGames={this.props.userGames} handleUserGameClick={this.handleUserGameClick} />
+        </Grid>
+        <Grid item s={6}>
+          <MoveList moves={this.props.fetchedGame.moves} />
+        </Grid>
+
+      </Grid>
     )
   }
 

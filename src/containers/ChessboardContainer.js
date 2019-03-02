@@ -52,6 +52,11 @@ const chess = new Chess();
     )
   }
 
+  componentWillUnmount() {
+    console.log("unmount")
+    this.clearBoard();
+  }
+
 }
 
 const mapStateToProps = state => ({
