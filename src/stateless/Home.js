@@ -1,8 +1,7 @@
 import React from "react"
 import {connect} from "react-redux"
-import {
-  Link
-} from 'react-router-dom'
+import {Link} from 'react-router-dom'
+import blue from '@material-ui/core/colors/blue'
 
 const Home = props => {
   let links;
@@ -10,14 +9,14 @@ const Home = props => {
       links = (
         <>
         <h3> Click to start a new game or training session. </h3>
-          <Link to="/games/new"> New Game </Link>
+          <Link to="/games/new"> New Game </Link> <br/>
           <Link to="/games"> New Training </Link>
         </>
     )}else{
       links = (
       <>
-      <h3> Sign up or Log in to begin. </h3>
-        <Link to="/signup"> Sign Up </Link> <br/>
+        <h3> Sign up or Log in to begin. </h3>
+        <Link to="/signup" class="link"> Sign Up </Link> <br/> <br/>
         <Link to="/login"> Log In </Link>
       </>
     )}

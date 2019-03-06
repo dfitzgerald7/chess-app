@@ -8,10 +8,6 @@ const chess = new Chess();
 
  class ChessboardContainer extends Component {
 
-   // state = {
-   //   userGames: []
-   // }
-//
   onDrop = moveObj => { //code from chessboardjsx
     // debugger;
     const move = chess.move({
@@ -47,7 +43,6 @@ const chess = new Chess();
           orientation={this.props.turn.toLowerCase()} />
         <button onClick={this.clearBoard}> New Game </button>
         <button onClick={this.handleSavePosition} > Save this position </button>
-
       </>
     )
   }

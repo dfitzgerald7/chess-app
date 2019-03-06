@@ -17,30 +17,24 @@ function boardReducer(state={
       let newTurn = state.turn === "Black" ? "White" : "Black"
       return {...state, currentMove: newMove, positions: [...state.positions, action.payload], turn: newTurn}
     case "GOTO_MOVE":
-    console.log(action.payload)
       const {move_count, fen, id} = action.payload
       let turn = move_count % 2 === 0 ? "White" : "Black"
       let posArr = [];
       for (let i=0; i <= move_count; i++) {posArr.push(fen)}
       return {...state, positions: posArr, currentMove: move_count, turn: turn, gameId: id }
-      //very hacky, if i saved the full array I could use current move but I
-      //have to reset it to 0
     case "CLEAR_BOARD":
-      return {
-        ...state,
+      return {...state,
         currentMove: 0,
         turn: "White",
         positions: ["start"]}
-    case "LOADING_GAME":
-      return state
     case "FIND_GAME":
       if (action.payload.averageRating === 0){
         alert("No games found.")
         return state
       } else {
-      const topGame = action.payload.topGames[0]
-      const names = `${topGame.white.name} vs. ${topGame.black.name}`
-      return {...state, fetchedGame: {...state.fetchedGame, gameId: topGame.id, names }}}
+        const topGame = action.payload.topGames[0]
+        const names = `${topGame.white.name} vs. ${topGame.black.name}`
+        return {...state, fetchedGame: {...state.fetchedGame, gameId: topGame.id, names }}}
     case "DISPLAY_GAME":
       const moveList = action.payload.split("\n").slice(-1)[0]
       const cleanMoveList = moveList.replace(/\d+\. /g, "").split(" ")
@@ -55,24 +49,18 @@ function boardReducer(state={
 }
 
 function userReducer(state={
-    games: [],
-    isLoggedIn: false
+    games: []
   }, action){
     switch (action.type){
     case ("ADD_USER_GAMES"):
       let posArr = [];
       action.payload.forEach(game => posArr.push(game))
       return {...state, games: posArr}
-    case ("ADD_SAVED_GAME"): //TODO
-      // const newArr = state.games.push(action.payload)
+    case ("ADD_SAVED_GAME"):
       return {games: [...state.games, action.payload]}
     case ("DELETE_GAME"):
       const newGames = state.games.filter(game => game.id !== action.payload.id)
       return {games: newGames}
-    case "LOG_IN":
-      return {...state, isLoggedIn: true}
-    case "LOG_OUT":
-      return {...state, isLoggedIn: false}
     default:
       return state
     }

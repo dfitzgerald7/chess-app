@@ -36,16 +36,16 @@ const userPositions = userId => {
 }
 
  const deletePosition = gameId => {
-   clearBoard()
-   return dispatch =>
-    fetch(`http://localhost:5000/games/${gameId}`, {
+   return dispatch => {
+    dispatch(clearBoard())
+    return fetch(`http://localhost:5000/games/${gameId}`, {
       method: "DELETE",
       headers:{
         'Content-Type': 'application/json',
         "Authorization": `Bearer ${localStorage.getItem("token")}`
       }
       // body: JSON.stringify({id: gameId})
-    }).then(resp => resp.json()).then(resp => dispatch({type: "DELETE_GAME", payload: resp}))
+    }).then(resp => resp.json()).then(resp => dispatch({type: "DELETE_GAME", payload: resp}))}
  }
 
 export { addMove, gotoMove, clearBoard, savePosition, userPositions, deletePosition}
