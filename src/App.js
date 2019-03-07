@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import {Route, Redirect} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import ChessboardContainer from "./containers/ChessboardContainer"
 import TrainingContainer from "./containers/TrainingContainer"
 import UserContainer from "./containers/UserContainer"
-import {logout} from "./actions/userActions"
 import NavBar from "./stateless/NavBar"
 import Home from "./stateless/Home"
 

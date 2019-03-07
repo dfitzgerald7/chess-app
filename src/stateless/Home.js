@@ -1,7 +1,6 @@
 import React from "react"
 import {connect} from "react-redux"
 import {Link} from 'react-router-dom'
-import blue from '@material-ui/core/colors/blue'
 
 const Home = props => {
   let links;
@@ -16,7 +15,7 @@ const Home = props => {
       links = (
       <>
         <h3> Sign up or Log in to begin. </h3>
-        <Link to="/signup" class="link"> Sign Up </Link> <br/> <br/>
+        <Link to="/signup"> Sign Up </Link> <br/> <br/>
         <Link to="/login"> Log In </Link>
       </>
     )}

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {BrowserRouter as Router, Route} from "react-router-dom"
+import {BrowserRouter as Router} from "react-router-dom"
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from "./reducers/rootReducer"
@@ -10,7 +10,6 @@ import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const composeEnhancers = composeWithDevTools({
     name: `Redux`,
     realtime: true,
