@@ -12,6 +12,7 @@ const clearBoard = () => ({
 })
 
 const savePosition = boardObject => {
+  console.log('C')
   return dispatch =>
     fetch("http://localhost:5000/games", {
       method: "POST",
@@ -21,7 +22,10 @@ const savePosition = boardObject => {
       },
       body: JSON.stringify({game: boardObject})}
     ).then(resp => resp.json()).then(resp =>{
+      console.log('D')
       dispatch({type: "ADD_SAVED_GAME", payload: resp})})
+
+      console.log('E')
 }
 
 const userPositions = userId => {

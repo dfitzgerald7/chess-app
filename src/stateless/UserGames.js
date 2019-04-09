@@ -1,13 +1,19 @@
 
-import React from "react"
+import React, {Component} from "react"
+import GameVotes from "./GameVotes"
 
-const UserGames = props => {
-  return (
+class UserGames extends Component {
+
+
+  render(){
+    return (
     <ul id="user-positions">
-        {props.userGames.map((game, index) => (
-          <button key={game.id} onClick={() => props.handleUserGameClick(game)}> Game {index+1} </button>))}
-    </ul>
-  )
-}
+        {this.props.userGames.map((game, index) => (
+          <GameVotes game={game} index={index}/>
+        ))}
 
+    </ul>
+
+  )}
+}
 export default UserGames
