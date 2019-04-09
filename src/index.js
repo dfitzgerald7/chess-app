@@ -8,15 +8,7 @@ import thunk from 'redux-thunk';
 import rootReducer from "./reducers/rootReducer"
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
-import { composeWithDevTools } from 'redux-devtools-extension';
-
-const composeEnhancers = composeWithDevTools({
-    name: `Redux`,
-    realtime: true,
-    trace: true,
-    traceLimit: 25
-});
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
+const store = createStore(rootReducer, applyMiddleware(thunk))
 
 ReactDOM.render((
   <Router >
