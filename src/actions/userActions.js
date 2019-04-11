@@ -5,7 +5,8 @@ const signup = userObject => {
     method: "POST",
     body: JSON.stringify({"user": userObject}),
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin':'*'
     }
   }).then(resp => console.log("users", resp))
 }
@@ -16,7 +17,8 @@ const login = ({ email, password }, history) => {
     method: "POST",
     headers: {
       'Content-Type': 'application/json',
-       "Authorization": `Bearer ${localStorage.getItem("token")}`
+       "Authorization": `Bearer ${localStorage.getItem("token")}`,
+       'Access-Control-Allow-Origin':'*'
     },
     body: JSON.stringify({auth: {email: email, password: password}})
   }).then(resp => resp.json())
