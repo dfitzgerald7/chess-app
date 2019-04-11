@@ -29,9 +29,7 @@ const chess = new Chess();
   }
 
   handleSavePosition = () => {
-    console.log('A')
     this.props.savePosition({fen: chess.fen(), move_count: this.props.currentMove})
-    console.log('B')
   }
 
 

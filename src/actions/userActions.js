@@ -1,7 +1,7 @@
 
 const signup = userObject => {
   return dispatch =>
-  fetch("http://localhost:5000/users",{
+  fetch("https://doug-fitzgerald-chess-api.herokuapp.com/users",{
     method: "POST",
     body: JSON.stringify({"user": userObject}),
     headers: {
@@ -12,7 +12,7 @@ const signup = userObject => {
 
 const login = ({ email, password }, history) => {
   return dispatch =>
-  fetch("http://localhost:5000/user_token",{
+  fetch("https://doug-fitzgerald-chess-api.herokuapp.com/user_token",{
     method: "POST",
     headers: {
       'Content-Type': 'application/json',
