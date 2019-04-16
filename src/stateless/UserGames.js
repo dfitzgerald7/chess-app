@@ -1,6 +1,5 @@
 
 import React, {Component} from "react"
-import GameVotes from "./GameVotes"
 
 class UserGames extends Component {
 
@@ -9,7 +8,7 @@ class UserGames extends Component {
     return (
     <ul id="user-positions">
         {this.props.userGames.map((game, index) => (
-          <GameVotes game={game} index={index}/>
+          <p> {index}. {game} </p>
         ))}
 
     </ul>
