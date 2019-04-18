@@ -24,7 +24,6 @@ const Home = props => {
   return (
       <div id="home-links">
         <h1> Welcome to your Chess Trainer! </h1>
-        <h2> Play a game with a friend or view professional games. </h2>
         {links}
       </div>
   )

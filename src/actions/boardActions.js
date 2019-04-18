@@ -14,7 +14,7 @@ const clearBoard = () => ({
 const savePosition = boardObject => {
   console.log('C')
   return dispatch =>
-    fetch("http://localhost:5000/games", {
+    fetch("https://doug-fitzgerald-chess-api-pg.herokuapp.com/games", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ const savePosition = boardObject => {
 
 const userPositions = userId => {
   return dispatch =>
-    fetch(`http://localhost:5000/games`, {
+    fetch(`https://doug-fitzgerald-chess-api-pg.herokuapp.com/games`, {
       headers: {
         'Content-Type': 'application/json',
         "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -42,7 +42,7 @@ const userPositions = userId => {
  const deletePosition = gameId => {
    return dispatch => {
     dispatch(clearBoard())
-    return fetch(`http://localhost:5000/games/${gameId}`, {
+    return fetch(`https://doug-fitzgerald-chess-api-pg.herokuapp.com/games/${gameId}`, {
       method: "DELETE",
       headers:{
         'Content-Type': 'application/json',

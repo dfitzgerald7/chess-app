@@ -9,7 +9,7 @@ class UserGames extends Component {
     return (
     <ul id="user-positions">
         {this.props.userGames.map((game, index) => (
-          <GameVotes game={game} index={index}/>
+          <button onClick={() => this.props.handleUserGameClick(game)} key={index}> Game {index+1} </button>
         ))}
 
     </ul>
