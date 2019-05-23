@@ -6,12 +6,12 @@ import Toolbar from '@material-ui/core/Toolbar';
 const NavBar = props => {
   let logoutButton;
   if (localStorage.getItem("token")){
-    logoutButton = <Button onClick={() => logout(props.history)} > Log Out </Button>
+    logoutButton = <Button className='navButton' onClick={() => logout(props.history)} > Log Out </Button>
   }
   return (
     <AppBar position="static">
       <Toolbar>
-        <Button onClick={() => props.history.push("/")} > Home </Button>
+        <Button className='navButton' onClick={() => props.history.push("/")} > Home </Button>
         {logoutButton}
       </Toolbar>
     </AppBar>

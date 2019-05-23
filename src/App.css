@@ -19,10 +19,17 @@
   color: white;
 }
 
+body {
+  background-color: white;
+}
+
 .App-link {
   color: #61dafb;
 }
 
+.MuiButton-label-42 {
+  color: white;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

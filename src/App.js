@@ -12,14 +12,14 @@ class App extends Component {
 
     return (
         <div className="App">
-          <header className="App-header">
+          {/* <header className="App-header"> */}
             <Route path="/" component={NavBar} />
             <Route exact path="/" component={Home}/>
             <Route path="/games/new" component={ChessboardContainer}/>
             <Route exact path="/games" component={TrainingContainer}/>
             <Route path="/signup" render={(props) => <UserContainer {...props} isSignup={true} />}/>
             <Route path="/login" render={(props) => <UserContainer {...props} isSignup={false} />}/>
-          </header>
+          
         </div>
     );
   }
