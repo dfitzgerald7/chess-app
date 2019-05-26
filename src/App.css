@@ -35,6 +35,12 @@ body {
   height: 2.5rem;       
 }
 
+#gameBoard {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
 .App-link {
   color: #61dafb;
 }

@@ -37,10 +37,12 @@ const chess = new Chess();
     return (
       <>
         <h3> {this.props.turn} to move. </h3>
-        <Chessboard position={this.props.positions[(this.props.currentMove)]}
-          width="400"
-          onDrop={this.onDrop}
-          orientation={this.props.turn.toLowerCase()} />
+        <div id='gameBoard'>
+          <Chessboard position={this.props.positions[(this.props.currentMove)]}
+            width="400"
+            onDrop={this.onDrop}
+            orientation={this.props.turn.toLowerCase()} />
+        </div>
         <button onClick={this.clearBoard}> New Game </button>
         <button onClick={this.handleSavePosition} > Save this position </button>
       </>
