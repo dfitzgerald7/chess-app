@@ -52,11 +52,23 @@ class TrainingContainer extends Component {
 
   renderButton = () => {
     if (this.props.fetchedGame.moves.length !== 0) {
-      return <button onClick={this.nextMove}> Next Move </button>
+      return (
+        <>
+        <p> Click next move button to play out the professional game! </p>
+        <button onClick={this.nextMove}> Next Move </button>
+        </>)
     } else if (this.props.fetchedGame.gameId) {
-      return <button onClick={this.displayGame}> Display this game! </button>
+      return (
+        <>
+        <p> A game was found! Would you like to display it? </p>
+        <button onClick={this.displayGame}> Display this game! </button>
+        </>)
     } else{
-      return <button onClick={this.handleClick}> Find a game with the same opening! </button>
+      return (
+        <>
+        <p> Input an opening on the board, then click button below. </p>
+        <button onClick={this.handleClick}> Find a game with the same opening! </button>
+        </>)
     }
   }
 
@@ -64,6 +76,7 @@ class TrainingContainer extends Component {
     return (
       <Grid container spacing={24} justify="center">
         <Grid item s={6} >
+          <h6> If unintended features occur, please refresh the page. </h6>
           <InfoBar names={this.props.fetchedGame.names} gameId={this.props.gameId} deletePosition={this.props.deletePosition}/>
           <Chessboard position={this.props.positions[this.props.currentMove]} onDrop={this.onDrop} width="400"/>
           {this.renderButton()}
