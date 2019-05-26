@@ -23,6 +23,18 @@ body {
   background-color: white;
 }
 
+
+#footer {
+  clear: both;
+  padding: 10px;
+  color: black;
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  width: 98%;
+  height: 2.5rem;       
+}
+
 .App-link {
   color: #61dafb;
 }
