@@ -15,6 +15,7 @@ const Home = props => {
       links = (
       <>
         <h3> Sign up or Log in to begin. </h3>
+        <h4> You can log in with default username and password </h4> 
         <Link to="/signup"> Sign Up </Link> <br/> <br/>
         <Link to="/login"> Log In </Link>
       </>
