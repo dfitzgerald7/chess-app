@@ -12,13 +12,14 @@ class App extends Component {
 
     return (
         <div className="App">
-
             <Route path="/" component={NavBar} />
-            <Route exact path="/" component={Home}/>
-            <Route path="/games/new" component={ChessboardContainer}/>
-            <Route exact path="/games" component={TrainingContainer}/>
-            <Route path="/signup" render={(props) => <UserContainer {...props} isSignup={true} />}/>
-            <Route path="/login" render={(props) => <UserContainer {...props} isSignup={false} />}/>
+            <div className = 'container'>
+              <Route exact path="/" component={Home}/>
+              <Route path="/games/new" component={ChessboardContainer}/>
+              <Route exact path="/games" component={TrainingContainer}/>
+              <Route path="/signup" render={(props) => <UserContainer {...props} isSignup={true} />}/>
+              <Route path="/login" render={(props) => <UserContainer {...props} isSignup={false} />}/>
+            </div>
             <div id='footer'> Copyright Doug Fitzgerald </div>
         </div>
     
