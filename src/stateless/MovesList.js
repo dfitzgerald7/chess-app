@@ -11,13 +11,13 @@ const MoveList = props => {
     <Table className="MoveList" style={{height: 10}}>
       <TableHead>
         <TableRow>
-          <TableCell style={{color:"white"}}>Move List </TableCell>
+          <TableCell>Move List </TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
         {props.moves.map((move, index) => (
           <TableRow key={index}>
-            <TableCell align="right" style={{color: "white"}}>{index+1}. {move}</TableCell>
+            <TableCell align="right">{index+1}. {move}</TableCell>
           </TableRow>
         ))}
       </TableBody>

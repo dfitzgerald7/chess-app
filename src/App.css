@@ -9,6 +9,10 @@
   margin-right: auto;
 }
 
+.MoveList {
+  color: black
+}
+
 Link {
   padding-bottom: 10px
 }
@@ -47,7 +51,7 @@ body {
 
 #gameBoard {
   margin: auto;
-  width: 49%;
+  width: 50%;
   padding: 10px;
 }
 
