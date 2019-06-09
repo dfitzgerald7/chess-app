@@ -9,6 +9,9 @@
   margin-right: auto;
 }
 
+Link {
+  padding-bottom: 10px
+}
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
@@ -44,7 +47,7 @@ body {
 
 #gameBoard {
   margin: auto;
-  width: 22%;
+  width: 49%;
   padding: 10px;
 }
 
